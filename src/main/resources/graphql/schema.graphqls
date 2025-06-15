@@ -1,0 +1,35 @@
+type Book{
+    id:ID!
+    title :String!
+    author:String!
+}
+
+type BookVO{
+    id : ID!
+    bookName:String
+    bookAuthor:String
+}
+
+
+input BookInput {
+    title: String
+    author: String
+}
+
+input PageInput {
+    page : Int!
+    size : Int!
+}
+
+type Query {
+    books:[BookVO]
+    bookById(id : ID!):BookVO
+    bookPages(input : PageInput!): [BookVO!]!
+}
+
+type Mutation{
+    addBook( input:BookInput! ) :BookVO
+    updateBook(input:BookInput!) : BookVO
+    deleteBook(id : ID!) : Boolean
+}
+
